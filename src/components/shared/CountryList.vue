@@ -3,12 +3,12 @@
         class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4"
     >
         <div
-            class="card border-2 p-4 m-11 rounded-lg hover:cursor-pointer hover:shadow-lg hover:border-orange-800"
+            class="card  p-4 m-11 rounded-lg hover:cursor-pointer hover:shadow-lg hover:border-orange-800"
             v-for="(country, idx) in countries"
             :key="idx"
             @click="goToCountry(country.name.common)"
         >
-            <div>
+            <div class="flex justify-center">
                 <img :src="country.flags.png" alt="" class="rounded-xl" />
             </div>
             <br />
@@ -33,36 +33,9 @@
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                 }}
             </div>
-
-            <!-- <div>
-                <span class="text-sm text-red-600">Currency: </span
-                >{{ country.currencies }}
-            </div> -->
-
-            <!-- <div>
-                <span class="text-sm text-red-600">Capital: </span>
-                {{ country.capital }}
-            </div> -->
-
-            <!-- <div>
-                <span class="text-sm text-red-600">Alt Spellings: </span
-                >{{ country.altSpellings }}
-            </div> -->
-
-            <!-- <div>
-                <span class="text-sm text-red-600">Languages: </span
-                >{{ country.languages }}
-            </div> -->
-
-            <!-- <div>
-                <span class="text-sm text-red-600"></span
-                >{{ country.continent }}
-            </div> -->
-
-            <!-- <div>
-                Arm
-                <img :src="country.coatOfArms.png" alt="" />
-            </div> -->
+            <div class="flex justify-end mt-5">
+                <span class="text-sm text-red-600 bg-purple-600 p-2 hover:text-purple-200 hover:bg-red-600 rounded-lg">More Info</span>
+            </div>
         </div>
     </div>
 </template>
@@ -87,8 +60,8 @@ const getCountriesInfo = () => {
     });
 };
 
-const goToCountry = (countryName: string) => {
-    router.push({ name: "Country", params: { countryName } });
+const goToCountry = (countryName) => {
+    router.push("/country/" + countryName);
 };
 
 onMounted(() => {
