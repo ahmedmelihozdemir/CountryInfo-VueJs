@@ -12,11 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-
 
 const changeMode = ref(() => {
     store.state.lightMode = !store.state.lightMode;

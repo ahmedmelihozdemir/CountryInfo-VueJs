@@ -7,13 +7,10 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { onMounted, watch } from "vue";
 import { useStore } from "vuex";
-import { useRoute, useRouter } from "vue-router";
 
 const store = useStore();
-const route = useRoute();
-const router = useRouter();
 
 watch(
     () => store.state.lightMode,
@@ -41,9 +38,9 @@ onMounted(() => {
     background-color: #f0d0d0;
     color: black;
 }
-
 $background-color-dark: #1f2937;
 $background-color-white: #f0d0d0;
+
 #app {
     font-family: Fredoka One, cursive;
     -webkit-font-smoothing: antialiased;
