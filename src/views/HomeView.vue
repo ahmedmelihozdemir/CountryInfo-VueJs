@@ -1,8 +1,8 @@
 <template>
     <div class="home">
-        <HeaderComponent></HeaderComponent>
-        <FilterComponent></FilterComponent>
-        <CountryList></CountryList>
+        <HeaderComponent />
+        <FilterComponent />
+        <CountryList />
     </div>
 </template>
 
