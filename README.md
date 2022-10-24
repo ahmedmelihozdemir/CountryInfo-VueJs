@@ -1,4 +1,6 @@
 # vue3-countries-information
+This project was built using Vue3. Tailwind is used in the ui part.
+
 
 ## Project setup
 ```
