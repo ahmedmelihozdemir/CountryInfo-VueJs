@@ -35,7 +35,7 @@ onMounted(() => {
 
 <style lang="scss">
 .light {
-    background-color: #f0d0d0;
+    background-color: #e9b2b2;
     color: black;
 }
 $background-color-dark: #1f2937;

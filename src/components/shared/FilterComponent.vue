@@ -10,9 +10,10 @@
                     name="search"
                     placeholder="Search country!"
                     v-model="search"
-                    class="input-section border-red-400 rounded-lg p-2 m-2 bg-cyan-800 focus:border-none focus:outline-none"
+                    class="input-section text-white border-red-400 rounded-lg p-2 m-2 bg-cyan-800 focus:border-none focus:outline-none"
                     :class="{
                         'bg-slate-300': lightMode,
+                        'text-gray-900': lightMode,
                     }"
                 />
             </label>
@@ -39,11 +40,12 @@
     </div>
 </template>
 
-<script lang="ts" setup>
-import { ref, reactive, provide } from "vue";
+<script setup lang="ts">
+import { ref, reactive, defineEmits, watchEffect } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
+const emit = defineEmits(["selectedContinent", "search"]);
 
 const lightMode = ref(store.state.lightMode);
 
@@ -54,19 +56,18 @@ const continents = reactive([
     { name: "Africa", value: "africa" },
     { name: "Oceania", value: "oceania" },
     { name: "Antarctic", value: "antarctic" },
-
 ]);
 
 const filterContinent = ref("All");
-provide('filterContinent', filterContinent.value); 
 
-const search = ref();
-/* const filteredCountries = computed(()=> {
-    countries.value.filter((country)=>{
-        return country.common.name.toLowerCase().includes(search.value.toLowerCase())
-    })
-})  */
+watchEffect(() => {
+    emit("selectedContinent", filterContinent.value);
+});
 
+const search = ref<string>("");
+watchEffect(() => {
+    emit("search", search.value);
+});
 
 </script>
 
